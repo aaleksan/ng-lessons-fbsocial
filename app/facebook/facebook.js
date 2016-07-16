@@ -2,12 +2,12 @@
 
 angular.module('ngSocial.facebook', ['ngRoute', 'ngFacebook'])
 
-.config['$routeProvicer', function($routeProvider){
+.config('$routeProvicer', function($routeProvider){
   $routeProvider.when('/facebook', {
     templateUrl: 'facebook/facebook.html',
     controller: 'FacebookCtrl'
   });
-}]
+})
 
 .config( function( $facebookProvider ) {
   $facebookProvider.setAppId('604544609719235');
