@@ -42,7 +42,8 @@ angular.module('ngSocial.facebook', ['ngRoute', 'ngFacebook'])
   };
 
   function refresh() {
-    $facebook.api("/me").then(function(response) {
+    var fields = "id,email,first_name,last_name,gender,locale"
+    $facebook.api("/me?fields="+fields).then(function(response) {
       $scope.welcomeMsg = "Welcome " + response.name;
       $scope.isLoggedIn = true;
       $scope.userInfo = response;
