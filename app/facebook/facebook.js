@@ -26,5 +26,5 @@ angular.module('ngSocial.facebook', ['ngRoute', 'ngFacebook'])
 
 .controller('FacebookCtrl', [function(){
 
-});
+}]);
 
