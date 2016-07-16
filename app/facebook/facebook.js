@@ -11,7 +11,7 @@ angular.module('ngSocial.facebook', ['ngRoute', 'ngFacebook'])
 
 .config( function( $facebookProvider ) {
   $facebookProvider.setAppId('604544609719235');
-  $facebookProvider.setPermissions("email", "public_profile", "user_posts", "publish_actions", "user_photos");
+  $facebookProvider.setPermissions("email, public_profile, user_posts, publish_actions, user_photos");
 })
 
 .run(function($rootScope){
@@ -43,7 +43,7 @@ angular.module('ngSocial.facebook', ['ngRoute', 'ngFacebook'])
 
   function refresh() {
     
-    var fields = "id,email,first_name,last_name,gender,locale,link";
+    var fields = "id,name,email,first_name,last_name,gender,locale,link";
 
     $facebook.api("/me?fields="+fields).then(function(response) {
       $scope.welcomeMsg = "Welcome " + response.name;
@@ -55,6 +55,10 @@ angular.module('ngSocial.facebook', ['ngRoute', 'ngFacebook'])
       });
       $facebook.api("/me/permissions").then(function(response) {
         $scope.permissions = response.data;
+        console.log(response.data);
+      });
+      $facebook.api("/me/posts").then(function(response) {
+        $scope.posts = response.data;
         console.log(response.data);
       });
     },
